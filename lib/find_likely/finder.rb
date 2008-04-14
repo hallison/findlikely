@@ -66,7 +66,6 @@ module FindLikely
           for attribute in attributes
             module_eval <<-EOD # End of definitions
               def self.find_by_#{attribute}_likely(values, options = {})
-                puts "#{attribute}"
                 find_likely options.merge({ :#{attribute} => values })
               end
             EOD

@@ -64,11 +64,12 @@ module FindLikely
         # TODO: This method most be update for other params.
         unless attributes.size.zero?
           for attribute in attributes
-              class_eval <<-EOD # End of definitions
-                def self.find_by_#{attribute}_likely(values, options = {})
-                  find_likely options.merge(:#{attribute} => { values })
-                end
-              EOD
+            module_eval <<-EOD # End of definitions
+              def self.find_by_#{attribute}_likely(values, options = {})
+                puts "#{attribute}"
+                find_likely options.merge({ :#{attribute} => values })
+              end
+            EOD
           end
         end
       end

@@ -1,0 +1,12 @@
+
+FEATURES
+
+  * Write method for build dynamically methods into models for search by attributes.
+
+IMPROVEMENTS
+
+  * First, finish FEATURES.
+
+BUGS
+
+  * Run test units.

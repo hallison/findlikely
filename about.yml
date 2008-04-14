@@ -1,0 +1,5 @@
+author: "Hallison Batista"
+version: 1.0
+description: "FindLikely is a plugin that simplified the find method into ActiveRecord::Base using SQL LIKE clause."
+url: "http://hallison.batista.nom.br/plugins/find_likely/"
+

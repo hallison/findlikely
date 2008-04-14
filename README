@@ -1,0 +1,38 @@
+FindLikely
+==============
+
+FindLikely is a plugin that simplified the find method into ActiveRecord::Base.
+It's useful for less search actions. The +find_likely+ syntax is simple and has been
+support for write easely find methods for attributes.
+
+
+Example
+=======
+
+Use in your search methods. It's possible write samples search methods by attributes.
+
+class User < ActiveRecord::Base
+  belongs_to :role
+  use_find_likely_by :name  # User.find_by_name_likely
+end
+
+class Role < ActiveRecord::Base
+  has_many :users
+  use_find_values_by :name # User.find_by_name_likely
+end
+
+class Post < ActiveRecord::Base
+  has_many :comments
+end
+
+$ users_by_name         = User.find_likely :name => 'hall+bati rose+camp tobi+jess', :order => 'name ASC'
+$ users_by_name_or_role = User.find_likely :name => 'hall+bati', 'roles.name' => 'admin member', :include => :roles, :order => 'name ASC'
+$ roles_by_name         = User.find_likely :name => 'adm mem spo cli', :order => 'name ASC'
+$ users_by_name         = User.find_by_name_likely 'hall+bati roes+camp tobi+jess', :order => 'name ASC'
+
+$ posts_by_title             = Post.find_by_likely :title => 'first+project', :body => 'find+likely'
+$ posts_by_title_or_comments = Post.find_by_likely :title => 'testing plugin', 'comments.body' => 'great', :include => :comments
+$ roles_by_name              = Role.find_by_name_likely 'admin member sponsor client', :order => 'name ASC'
+
+
+Copyright (c) 2008 Hallison V. Batista, released under the MIT license
